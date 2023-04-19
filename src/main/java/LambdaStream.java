@@ -9,7 +9,7 @@ public class LambdaStream {
     //1) Übungsaufgaben bis -- 10.40
     //2) 5 min Pause 10.40 - 10.45
     //3) Vorstellung Lambdas
-    //4) 15 - 30 min Aufgabe bis xx.xx
+    //4) 15 - 30 min Aufgabe bis 12.00
     //5) Vorstellung Streams
     //6) Refaktorierung Übungsaufgaben bis xx.xx
 
@@ -28,17 +28,17 @@ public class LambdaStream {
 
     //Lambda: kleines Funktionen, die einzelne Logischritte ausführen
 
-    //(parameter) -> {body}
+    //  (parameter) -> {body}                   -   Allgemeine Lambda Schreibweise
 
-    //parameter -> body
-    //() -> body
-    //(parameter 1, parameter 2) -> body;
+    //  parameter -> body                       -   Lambda mit 1 Parameter und one-line Logik
+    //  () -> body                              -   Lambda ohne Parameter und one-line Logik
+    //  (parameter 1, parameter 2) -> body;     -   Lambda mit 2 Parametern und one-line Logik
 
-    //parameter -> {
-    //zeile 1;
-    //zeile 2;
-    //return ausgabe;
-    //}
+    //  parameter -> {                          -   Lambda mit 1 Parameter und multi-line Logik
+    //          zeile 1;
+    //          zeile 2;
+    //          return ausgabe;
+    //  }
 
     //Bifunction<Eingabewert 1, Eingabewert 2, Ausgabewert> name = (Eingabewert 1, Eingabewert 2) -> Logik, Ausgabewert
     BiFunction<Integer, Integer, String> stringFromTwoInts = (x, y) -> Integer.toString(x + y);
