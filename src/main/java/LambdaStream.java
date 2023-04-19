@@ -1,5 +1,7 @@
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.*;
+import java.util.stream.Collectors;
 
 public class LambdaStream {
 
@@ -41,8 +43,6 @@ public class LambdaStream {
     //Bifunction<Eingabewert 1, Eingabewert 2, Ausgabewert> name = (Eingabewert 1, Eingabewert 2) -> Logik, Ausgabewert
     BiFunction<Integer, Integer, String> stringFromTwoInts = (x, y) -> Integer.toString(x + y);
 
-
-
     //Consumer<Eingabewert> name = Eingabewert -> Logik, OHNE Ausgabewert
     Consumer<String> printString = str -> System.out.println(str);
 
@@ -51,10 +51,10 @@ public class LambdaStream {
 
 
     public static void main(String[] args) {
-        /*
+
 
         int[] someNumbers = new int[]{1, 2, 3, 4, 5, 6, 7, 8};
-
+        /*
         String resultString = "";
 
         for (Integer number : someNumbers) {
@@ -66,8 +66,19 @@ public class LambdaStream {
             }
         }
         System.out.println(resultString);
+        */
 
-         */
+        String resultStringTwo = Arrays.stream(someNumbers)
+                .filter(num -> num > 4)
+                .map(num -> num * num)
+                .mapToObj(num -> {
+                    System.out.println(num);
+                    return String.valueOf(num);
+                })
+                .collect(Collectors.joining());
+
+        System.out.println(resultStringTwo);
+
         //Zuweisung Lambda function zu addOneToLambda variablen;
         Function<Integer, Integer> addOneToLambda = num -> num + 1;
         //Aufruf der function
@@ -75,12 +86,27 @@ public class LambdaStream {
         //Anwendung der .forEach() methode mit lambda function als Übergabeparameter
         List.of(1, 2, 3, 4, 5, 6).forEach(num -> System.out.println(num));
 
+        //Streams
+        //Aneinanderkettung von Lambdas
 
+        List<Integer> someNumbersAsList = List.of(1, 2, 3, 4, 5, 6);
+
+        //3 Grundsätzliche Operationen
+            //Filter -> idR Predicate functions
+            //Strukturelle -> idR Function (also Lambdas mit Rückgabewert)
+            //Terminatoren -> idR Consumer functions
+        /*
+        List<Integer> lessNumbers = someNumbers.stream()
+                .filter(num -> num > 3)
+                .filter(num -> num < 5)
+                .map(num -> num - 3)
+                //.forEach(num -> System.out.println(num));
+                .toList();
+                //.collect();
+         */
     }
-
     /*
         Kurzübung code beautification zu Lambdas:
-
 
         try {
             methodThatShouldThrowAnExceptionOrError();
@@ -102,10 +128,7 @@ public class LambdaStream {
                 return whatYouReallyReallyWant
             }
         }
-
         //stattdessen
-
         return this.repository.findWhatYouReallyReallyWantById(id).orElseThrow(() -> new YourChosenException());
-
          */
 }
