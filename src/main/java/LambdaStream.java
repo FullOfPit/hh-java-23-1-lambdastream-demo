@@ -42,6 +42,14 @@ public class LambdaStream {
     BiFunction<Integer, Integer, String> stringFromTwoInts = (x, y) -> Integer.toString(x + y);
 
 
+
+    //Consumer<Eingabewert> name = Eingabewert -> Logik, OHNE Ausgabewert
+    Consumer<String> printString = str -> System.out.println(str);
+
+    //Predicate<Eingabewert> name = Eingabewert -> Logik, boolean Ausgabewert
+    Predicate<String> isLongerThanTen = str -> str.length() > 10;
+
+
     public static void main(String[] args) {
         /*
 
@@ -60,19 +68,20 @@ public class LambdaStream {
         System.out.println(resultString);
 
          */
-
+        //Zuweisung Lambda function zu addOneToLambda variablen;
         Function<Integer, Integer> addOneToLambda = num -> num + 1;
-
+        //Aufruf der function
         System.out.println(addOneToLambda.apply(1));
-
-        //Consumer<Eingabewert> name = Eingabewert -> Logik, OHNE Ausgabewert
-        Consumer<String> printString = str -> System.out.println(str);
-
-        //Predicate<Eingabewert> name = Eingabewert -> Logik, boolean Ausgabewert
-        Predicate<String> isLongerThanTen = str -> str.length() > 10;
-
+        //Anwendung der .forEach() methode mit lambda function als Übergabeparameter
         List.of(1, 2, 3, 4, 5, 6).forEach(num -> System.out.println(num));
-        /*
+
+
+    }
+
+    /*
+        Kurzübung code beautification zu Lambdas:
+
+
         try {
             methodThatShouldThrowAnExceptionOrError();
             fail();
@@ -99,7 +108,4 @@ public class LambdaStream {
         return this.repository.findWhatYouReallyReallyWantById(id).orElseThrow(() -> new YourChosenException());
 
          */
-
-
-    }
 }
