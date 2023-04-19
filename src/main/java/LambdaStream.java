@@ -11,9 +11,7 @@ public class LambdaStream {
     //3) Vorstellung Lambdas
     //4) 15 - 30 min Aufgabe bis 12.00
     //5) Vorstellung Streams
-    //6) Refaktorierung Übungsaufgaben bis xx.xx
-
-    //(x + 1)
+    //6) Refaktorierung Übungsaufgaben bis 14.00
 
     public static int addOne(int number) {
         return number + 1;
